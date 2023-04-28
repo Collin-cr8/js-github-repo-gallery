@@ -32,14 +32,25 @@ const displayUserInfo = function(gitProfileInfo) {
     <p><strong>Number of public repos:</strong> ${gitProfileInfo.public_repos}</p>
   </div> `
   overview.append(div);
+  fetchRepos();
 };
 
 //Create async function to fetch repos
 //endpoints to get user's repos = user/${username}/repos
 //parameters to sort repos by most recently updated and show up to 100 at a time
 const fetchRepos = async function () {
-    const repoInfo = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-    const data = await repoInfo.json();
-    console.log(data);
+    const repoNames = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+    const data = await repoNames.json();
+    //console.log(data);
+    repoInfo(data);
 };
 
+//Create function to display repo info
+const repoInfo = function (repos) {
+    for (const repo of repos) {
+       const repoData = document.createElement("li");
+       repoData.classList.add("repo");
+       repoData.innerHTML = `<h3>${repo.name}</h3>`;
+       repoList.append(repoData);
+    }
+};

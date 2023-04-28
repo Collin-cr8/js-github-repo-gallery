@@ -2,6 +2,10 @@
 const overview = document.querySelector(".overview");
 //GitHub username
 const username = "Collin-cr8"
+//Select unordered list to display repos
+const repoList = document.querySelector(".repo-list");
+
+
 //Create async function to fetch gitHub profile info using GitHub API
 const getGitHub = async function () {
     const userInfo = await fetch(`https://api.github.com/users/${username}`);
@@ -29,3 +33,13 @@ const displayUserInfo = function(gitProfileInfo) {
   </div> `
   overview.append(div);
 };
+
+//Create async function to fetch repos
+//endpoints to get user's repos = user/${username}/repos
+//parameters to sort repos by most recently updated and show up to 100 at a time
+const fetchRepos = async function () {
+    const repoInfo = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+    const data = await repoInfo.json();
+    console.log(data);
+};
+

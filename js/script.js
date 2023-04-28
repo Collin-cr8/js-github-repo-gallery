@@ -6,8 +6,8 @@ const username = "Collin-cr8"
 const getGitHub = async function () {
     const userInfo = await fetch(`https://api.github.com/users/${username}`);
     const gitProfileInfo = await userInfo.json();
-    console.log(gitProfileInfo);
-    
+   // console.log(gitProfileInfo);
+    displayUserInfo(gitProfileInfo);
 
 };
 
@@ -15,16 +15,17 @@ getGitHub();
 
 //Create function to display fetched github info
 const displayUserInfo = function(gitProfileInfo) {
-    const div = document.createElement(div);
+    const div = document.createElement("div");
     div.classList.add("user-info");
-    div.innerHTML = `<figure>
-    <img alt = "user avatar" src=${getGitHub.avatar_url} />
+    div.innerHTML = `
+    <figure>
+        <img alt = "user avatar" src=${gitProfileInfo.avatar_url} />
     </figure>
   <div>
-    <p><strong>Name:</strong> ${getGitHub.name}</p>
-    <p><strong>Bio:</strong> ${getGitHub.bio}</p>
-    <p><strong>Location:</strong> ${getGitHub.location}</p>
-    <p><strong>Number of public repos:</strong> ${getGitHub.public_repos}</p>
+    <p><strong>Name:</strong> ${gitProfileInfo.name}</p>
+    <p><strong>Bio:</strong> ${gitProfileInfo.bio}</p>
+    <p><strong>Location:</strong> ${gitProfileInfo.location}</p>
+    <p><strong>Number of public repos:</strong> ${gitProfileInfo.public_repos}</p>
   </div> `
   overview.append(div);
 };

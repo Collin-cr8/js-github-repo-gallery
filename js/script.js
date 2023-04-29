@@ -34,7 +34,7 @@ const displayUserInfo = function(gitProfileInfo) {
     <p><strong>Bio:</strong> ${gitProfileInfo.bio}</p>
     <p><strong>Location:</strong> ${gitProfileInfo.location}</p>
     <p><strong>Number of public repos:</strong> ${gitProfileInfo.public_repos}</p>
-  </div> `
+  </div> `;
   overview.append(div);
   fetchRepos();
 };
@@ -86,3 +86,18 @@ const getRepoInfo = async function (repoName) {
     console.log(languages);
 };
 
+//create function to DISPLAY repo info
+const displayRepoInfo = function (repoInfo, languages) {
+    repoData.innerHTML = "";
+    repoData.classList.remove("hide");
+    allRepos.classList.add("hide");
+    const dataDiv = document.createElement("div");
+    dataDiv.innerHTML = `
+    <h3>Name: ${repoInfo.name}</h3>
+        <p>Description: ${repoInfo.description}</p>
+        <p>Default Branch: ${repoInfo.default_branch}</p>
+        <p>Languages: ${languages.join(", ")}</p>
+        <a class="visit" href="${repoInfo.html_url}" target="_blank" rel="noreferrer noopener">View Repo on GitHub!
+        </a>`;
+    repoData.append(div);
+};

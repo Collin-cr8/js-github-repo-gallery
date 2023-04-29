@@ -114,4 +114,20 @@ backButton.addEventListener("click", function() {
     allRepos.classList.remove("hide");
     repoData.classList.add("hide");
     backButton.classList.add("hide");
-})
+});
+
+//Add input event for search bar
+filterInput.addEventListener("input", function (e) {
+    const search = e.target.value;
+    const repos = document.querySelectorAll(".repo");
+    const lowerSearchText = search.toLowerCase();
+    
+    for (const repo of repos) {
+        const lowerRepoText = repo.innerText.toLowerCase();
+        if (lowerRepoText.includes(lowerSearchText)) {
+            repo.classList.remove("hide");
+        } else {
+            repo.classList.add("hide");
+        }
+    }
+});

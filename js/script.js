@@ -84,6 +84,7 @@ const getRepoInfo = async function (repoName) {
         languages.push(language);
     }
     console.log(languages);
+    displayRepoInfo(repoInfo, languages);
 };
 
 //create function to DISPLAY repo info
@@ -99,5 +100,5 @@ const displayRepoInfo = function (repoInfo, languages) {
         <p>Languages: ${languages.join(", ")}</p>
         <a class="visit" href="${repoInfo.html_url}" target="_blank" rel="noreferrer noopener">View Repo on GitHub!
         </a>`;
-    repoData.append(div);
+    repoData.append(dataDiv);
 };

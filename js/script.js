@@ -1,13 +1,13 @@
 //Targets div w/ class "overview"  where profile info will appear
 const overview = document.querySelector(".overview");
 //GitHub username
-const username = "Collin-cr8"
+const username = "Collin-cr8";
 //Select unordered list to display repos
 const repoList = document.querySelector(".repo-list");
 //Select repos class where repo info appears
-const repos = document.querySelector(".repos");
+const allRepos = document.querySelector(".repos");
 //Select "repo-data" where individual reppo data will appear
-const allRepoData = document.querySelector(".repo-data");
+const repoData = document.querySelector(".repo-data");
 
 
 //Create async function to fetch gitHub profile info using GitHub API
@@ -43,8 +43,8 @@ const displayUserInfo = function(gitProfileInfo) {
 //endpoints to get user's repos = user/${username}/repos
 //parameters to sort repos by most recently updated and show up to 100 at a time
 const fetchRepos = async function () {
-    const repoNames = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-    const data = await repoNames.json();
+    const getRepos = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+    const data = await getRepos.json();
     //console.log(data);
     displayRepo(data);
 };
@@ -71,13 +71,18 @@ repoList.addEventListener("click", function (e) {
 //Create async function to get specific repo info that accepts repoName as a parameter
 const getRepoInfo = async function (repoName) {
     //use endpoints to grab specific info
-    const res = await fetch(`https://api.github.com/repos/${username}/${repoName}`);
-    const repoInfo = await res.json();
+    const getInfo = await fetch(`https://api.github.com/repos/${username}/${repoName}`);
+    const repoInfo = await getInfo.json();
     //Log out info of repo that is clicked
     console.log(repoInfo);
     //Create an array of Languages
-    const fetchLanguages = await fetch(repoInfo.language_url);
+    const fetchLanguages = await fetch(repoInfo.languages_url);
     const languageData = await fetchLanguages.json();
-    console.log(languageData);
+    //console.log(languageData);
+    const languages = [];
+    for (const language in languageData) {
+        languages.push(language);
+    }
+    console.log(languages);
 };
 

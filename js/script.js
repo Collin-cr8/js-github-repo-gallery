@@ -4,6 +4,10 @@ const overview = document.querySelector(".overview");
 const username = "Collin-cr8"
 //Select unordered list to display repos
 const repoList = document.querySelector(".repo-list");
+//Select repos class where repo info appears
+const repos = document.querySelector(".repos");
+//Select "repo-data" where individual reppo data will appear
+const allRepoData = document.querySelector(".repo-data");
 
 
 //Create async function to fetch gitHub profile info using GitHub API
@@ -42,15 +46,32 @@ const fetchRepos = async function () {
     const repoNames = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
     const data = await repoNames.json();
     //console.log(data);
-    repoInfo(data);
+    displayRepo(data);
 };
 
 //Create function to display repo info
-const repoInfo = function (repos) {
+const displayRepo = function (repos) {
     for (const repo of repos) {
-       const repoData = document.createElement("li");
-       repoData.classList.add("repo");
-       repoData.innerHTML = `<h3>${repo.name}</h3>`;
-       repoList.append(repoData);
+       const repoItem = document.createElement("li");
+       repoItem.classList.add("repo");
+       repoItem.innerHTML = `<h3>${repo.name}</h3>`;
+       repoList.append(repoItem);
     }
+};
+
+repoList.addEventListener("click", function (e) {
+    //check if event target (element that was clicked) matches h3 element (name of repo)
+    if (e.target.matches("h3")) {
+        //target innerText where event happens
+        const repoName = e.target.innerText;
+        getRepoInfo(repoName);
+    }
+});
+
+//Create async function to get specific repo info that accepts repoName as a parameter
+const getRepoInfo = async function (repoName) {
+    //use endpoints to grab specific info
+    const res = await fetch(`https://api.github.com/repos/${username}/${repo}`);
+    const repoInfo = await res.json();
+    console.log(repoInfo);
 };

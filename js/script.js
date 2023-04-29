@@ -8,6 +8,10 @@ const repoList = document.querySelector(".repo-list");
 const allRepos = document.querySelector(".repos");
 //Select "repo-data" where individual reppo data will appear
 const repoData = document.querySelector(".repo-data");
+//Select the back to repo gallery button
+const backButton = document.querySelector(".view-repos");
+//Select input with "search by name" placeholder
+const filterInput = document.querySelector(".filter-repos");
 
 
 //Create async function to fetch gitHub profile info using GitHub API
@@ -49,8 +53,9 @@ const fetchRepos = async function () {
     displayRepo(data);
 };
 
-//Create function to display repo info
+//Create function to display repo list
 const displayRepo = function (repos) {
+    filterInput.classList.remove("hide");
     for (const repo of repos) {
        const repoItem = document.createElement("li");
        repoItem.classList.add("repo");
@@ -87,11 +92,12 @@ const getRepoInfo = async function (repoName) {
     displayRepoInfo(repoInfo, languages);
 };
 
-//create function to DISPLAY repo info
+//create function to DISPLAY individual repo info
 const displayRepoInfo = function (repoInfo, languages) {
     repoData.innerHTML = "";
     repoData.classList.remove("hide");
     allRepos.classList.add("hide");
+    backButton.classList.remove("hide");
     const dataDiv = document.createElement("div");
     dataDiv.innerHTML = `
     <h3>Name: ${repoInfo.name}</h3>
@@ -102,3 +108,10 @@ const displayRepoInfo = function (repoInfo, languages) {
         </a>`;
     repoData.append(dataDiv);
 };
+
+//Add click event to back button
+backButton.addEventListener("click", function() {
+    allRepos.classList.remove("hide");
+    repoData.classList.add("hide");
+    backButton.classList.add("hide");
+})

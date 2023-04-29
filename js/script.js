@@ -71,7 +71,13 @@ repoList.addEventListener("click", function (e) {
 //Create async function to get specific repo info that accepts repoName as a parameter
 const getRepoInfo = async function (repoName) {
     //use endpoints to grab specific info
-    const res = await fetch(`https://api.github.com/repos/${username}/${repo}`);
+    const res = await fetch(`https://api.github.com/repos/${username}/${repoName}`);
     const repoInfo = await res.json();
+    //Log out info of repo that is clicked
     console.log(repoInfo);
+    //Create an array of Languages
+    const fetchLanguages = await fetch(repoInfo.language_url);
+    const languageData = await fetchLanguages.json();
+    console.log(languageData);
 };
+

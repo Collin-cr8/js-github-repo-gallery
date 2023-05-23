@@ -46,7 +46,7 @@ h1 {
     font-size: 3.5em;
     text-align: center;
     font-family: "Oswald", sans-serif;
-    background-color: #483978;
+    background-color: #1E90FF;
     color: #fff;
     text-transform: uppercase;
     border-top-left-radius: 20px;
@@ -68,7 +68,7 @@ h1 {
 .circle {
     width: 20px;
     height: 20px;
-    background-color: #483978;
+    background-color: #1E90FF;
     border-radius: 100%;
     z-index: 99;
     align-self: center;
@@ -111,7 +111,7 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #483978;
+    background-color: #1E90FF;
     color: white;
     font-size: 18px;
     padding-bottom: 2em;
@@ -148,7 +148,7 @@ ul {
     margin-top: 1em;
     padding: 1em;
     margin-bottom: 1em;
-    border: 2px solid #483978;
+    border: 2px solid #1E90FF;
 }
 
 section.repo-data {
@@ -213,8 +213,8 @@ section.repo-data {
     margin-top: 2em;
     cursor: pointer;
     display: block;
-    background-color: #483978;
-    border: 1px solid #483978;
+    background-color: #1E90FF;
+    border: 1px solid #1E90FF;
 }
 
 .repo-data .visit:hover {

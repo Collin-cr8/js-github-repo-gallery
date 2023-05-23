@@ -12,6 +12,7 @@ body {
     background-color: #fbf9de;
     background-size: cover;
     background-position: center;
+    background-repeat: repeat;
     color: #333;
     font-size: 16px;
 }

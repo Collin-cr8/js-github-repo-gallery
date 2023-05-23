@@ -9,7 +9,7 @@ body {
     margin: 0;
     font-family: "Open Sans", sans-serif;
     background-image: url("../img/Geobackgorund.jpg");
-    background-color: #fbf9de;
+    background-color: #F0FFF0;
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
@@ -31,7 +31,7 @@ body {
 }
 
 .fa-github-alt {
-    color: #f86d58;
+    color: #9ACD32;
 }
 
 img {
@@ -84,7 +84,7 @@ h1 {
 h3 {
     width: 100%;
     text-align: center;
-    color: #f86d58;
+    color: #008000;
 }
 
 ul {
@@ -139,7 +139,7 @@ ul {
     width: 100%;
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid #9b8dc9;
+    border-bottom: 1px solid #9ACD32;
     padding-bottom: 19px;
 }
 
@@ -148,11 +148,11 @@ ul {
     margin-top: 1em;
     padding: 1em;
     margin-bottom: 1em;
-    border: 2px solid #1E90FF;
+    border: 2px solid #9ACD32;
 }
 
 section.repo-data {
-    background-color: #fff;
+    background-color: white;
     padding: 2em;
     padding-bottom: 1em;
 }
@@ -161,7 +161,7 @@ section.repo-data {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #fff;
+    background-color: white;
     margin-top: 0;
     padding: 2em;
 }
@@ -177,7 +177,7 @@ section.repo-data {
 .repo-list li {
     width: 90%;
     margin: 1em 0;
-    border: 1px solid #f86d58;
+    border: 1px solid #9ACD32;
     padding: 0.5em;
 }
 
@@ -188,7 +188,7 @@ section.repo-data {
 }
 
 .repo-list h3:hover {
-    background-color: #eee9ff;
+    background-color: #F0FFF0;
     cursor: pointer;
 }
 
